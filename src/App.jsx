@@ -9,25 +9,22 @@ function App() {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.from(".loading-text-pre-post", {
-        opacity: 1
-      })
-
       gsap.to(".loading-text-pre-post", {
         opacity: 0,
-        duration: 6
-      })
+        duration: 3,
+      });
       gsap.to(".loading-text-mid", {
         color: "#F8FF07",
-        delay: 4,
+        delay: 2.5,
         fontSize: "9em",
-        duration: 3,
-      })
+        duration: 1.5,
+      });
     });
+    return () => ctx.revert()
   });
 
   return (
-    <div ref={comp}>
+    <div>
       <div>
         <LoadingScreen preText={"t"} midText={"o"} postText={"m"} comp={comp} />
       </div>
